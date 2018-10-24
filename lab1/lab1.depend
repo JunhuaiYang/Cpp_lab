@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1539691159 source:c:\users\acer\onedrive\c++lab\lab1\main.cpp
+	<iostream>
+	<stdio.h>
+	<malloc.h>
+	<stdlib.h>
+	<string.h>
+
