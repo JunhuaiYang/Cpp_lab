@@ -164,7 +164,10 @@ int main(int argc, char const *argv[])
                 if((k=getelem(pstack, input)) != -1)
                     printf("  %d", k);
                 else
+                {
                     printf("  E");
+                    flag = 0;
+                }
             }
             break;
 

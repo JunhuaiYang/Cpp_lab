@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1540535512 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab2\main.cpp
+	"lab2.h"
+
+1540474220 c:\users\acer\onedrive\c++lab\cpp_lab\lab2\lab2.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<string.h>
+
