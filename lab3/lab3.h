@@ -2,6 +2,9 @@
 #define LAB3_H_INCLUDED
 
 #include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <string.h>
 
 class STACK
 {
