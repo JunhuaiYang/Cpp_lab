@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters=" -S  5  -I  1  2  3  4 -G 3 -I 5 6 7 8 -O 3 -I 9 0 -G 6 -I 1 " />
+				<Option parameters="-S  5  -I  1  2  3  4 -O 2 -A 4 -I 5 6 -I 7 -I 8" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>

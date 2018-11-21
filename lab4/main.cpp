@@ -11,7 +11,6 @@ int main(int argc, char const *argv[])
     ctemp = strtok(name, ".");
     strcpy(name, ctemp);
     strcat( name, ".TXT");
-    cout << name;
 
     // 保存cout流缓冲区指针
     streambuf* coutBuf = cout.rdbuf();
