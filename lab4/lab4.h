@@ -5,6 +5,9 @@
 #include <fstream>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
+
+bool isPrime(int n);
 
 class STACK
 {

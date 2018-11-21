@@ -14,13 +14,14 @@
 1542555406 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab4\stack.cpp
 	"lab4.h"
 
-1542721966 c:\users\acer\onedrive\c++lab\cpp_lab\lab4\lab4.h
+1542785144 c:\users\acer\onedrive\c++lab\cpp_lab\lab4\lab4.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
 	<string.h>
+	<math.h>
 
-1542780991 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab4\main.cpp
+1542799583 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab4\main.cpp
 	"lab4.h"
 
 1542729610 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab4\queue.cpp
