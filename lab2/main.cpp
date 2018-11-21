@@ -12,6 +12,8 @@ int main(int argc, char const *argv[])
     strcpy(name, ctemp);
     strcat( name, ".TXT");
 
+    // 保存cout流缓冲区指针
+    streambuf* coutBuf = cout.rdbuf();
     // 输出重定向
     //打开输出文件
     ofstream outf(name);
@@ -161,6 +163,12 @@ int main(int argc, char const *argv[])
 
         }
     }
+    delete pstack;
+    //要关闭文件输出流
+    outf.close();
+    // 恢复cout原来的流缓冲区指针
+    // 不恢复会导致程序异常退出
+    cout.rdbuf(coutBuf);
     return 0;
 }
 

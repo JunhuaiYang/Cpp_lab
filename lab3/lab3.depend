@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1541594673 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab3\main.cpp
+1542728605 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab3\main.cpp
 	"lab3.h"
 
 1541590781 c:\users\acer\onedrive\c++lab\cpp_lab\lab3\lab3.h
@@ -7,4 +7,19 @@
 	<fstream>
 	<stdlib.h>
 	<string.h>
+
+1542722879 source:c:\users\85021\onedrive\c++lab\cpp_lab\lab3\main.cpp
+	"lab3.h"
+
+1541590781 c:\users\85021\onedrive\c++lab\cpp_lab\lab3\lab3.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<string.h>
+
+1541844930 source:c:\users\85021\onedrive\c++lab\cpp_lab\lab3\stack.cpp
+	"lab3.h"
+
+1541844930 source:c:\users\acer\onedrive\c++lab\cpp_lab\lab3\stack.cpp
+	"lab3.h"
 

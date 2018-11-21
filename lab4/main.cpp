@@ -1,4 +1,5 @@
-#include "lab3.h"
+#include "lab4.h"
+
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -9,6 +10,8 @@ int main(int argc, char const *argv[])
     strcpy(name, argv[0]);
     ctemp = strtok(name, ".");
     strcpy(name, ctemp);
+    strcat( name, ".TXT");
+    cout << name;
 
     // 保存cout流缓冲区指针
     streambuf* coutBuf = cout.rdbuf();
@@ -33,7 +36,7 @@ int main(int argc, char const *argv[])
 
     int input, flag = 1, k;
 
-    STACK *pstack = NULL, *temp;
+    QUEUE *pqueue = NULL, *temp;
 
     for(i=0; i<icomm && flag; i++)
     {
@@ -44,24 +47,29 @@ int main(int argc, char const *argv[])
             input = atoi(argv[commend[i]+1]);
             if(input)
             {
-                pstack = new STACK(input);
+                pqueue = new QUEUE(input);
                 cout << "S  " << input;
             }
             break;
 
         // 入栈
         case 'I':
-            if(pstack)
+            if(pqueue)
             {
                 j = commend[i]+1 ;
                 cout << "  I";
                 while ( j<=argc-1 &&  *(argv[j]) != '-')  //不是命令
                 {
+                    // 目前没有什么好的办法判断  “0” 和非法字符
+                    // 只能用标志强行判断
+                    int i_0 = 0;
+                    if(*argv[j] == '0')
+                        i_0 = 1;
                     input = atoi(argv[j]);
-                    if(input)
+                    if(input || i_0)
                     {
-                        //只能在外面判断是否栈满
-                        if( pstack->size() == *pstack)
+                        //只能在外面判断是否满
+                        if( pqueue->full() )
                         {
                             flag = 0;
                             break;
@@ -69,13 +77,13 @@ int main(int argc, char const *argv[])
                         else
                         {
                             flag = 1;
-                            *pstack << input;
+                            *pqueue << input;
                         }
                     }
                     j++;
                 }
                 if(flag)
-                    pstack->print();
+                    pqueue->print();
                 else
                     cout << "  E" ;
             }
@@ -83,18 +91,18 @@ int main(int argc, char const *argv[])
 
         // 出栈
         case 'O':
-            if(pstack)
+            if(pqueue)
             {
                 input = atoi(argv[commend[i]+1]);
                 cout << "  O";
-                //判读是否可以出栈
-                if(*pstack >= input)
+                //判读是否可以出队
+                if(*pqueue >= input)
                 {
                     for(j=0; j<input; j++)
                     {
-                        *pstack >> k;
+                        *pqueue >> k;
                     }
-                    pstack->print();
+                    pqueue->print();
                 }
                 else
                 {
@@ -106,48 +114,48 @@ int main(int argc, char const *argv[])
 
         // 深拷贝构造
         case 'C':
-            if(pstack)
+            if(pqueue)
             {
                 cout << "  C" ;
-                temp = new STACK(*pstack);
-                // 销毁原来pstack指向的栈
-                delete pstack;
-                pstack = temp;
-                pstack->print();
+                temp = new QUEUE(*pqueue);
+                // 销毁原来pqueue指向的栈
+                delete pqueue;
+                pqueue = temp;
+                pqueue->print();
             }
             break;
 
         // 深拷贝赋值
         case 'A':
-            if(pstack)
+            if(pqueue)
             {
                 cout << "  A";
                 input = atoi(argv[commend[i]+1]);
-                temp = new STACK(input);
+                temp = new QUEUE(input);
                 // 运算符重载
-                *temp = *pstack;
-                // 销毁原来pstack指向的栈
-                delete pstack;
-                pstack = temp;
-                pstack->print();
+                *temp = *pqueue;
+                // 销毁原来pqueue指向的栈
+                delete pqueue;
+                pqueue = temp;
+                pqueue->print();
             }
             break;
 
-        // 栈中剩余元素个数
+        // 队列中剩余元素个数
         case 'N':
-            if(pstack)
+            if(pqueue)
             {
                 cout << "  N";
-                cout << "  " << *pstack;
+                cout << "  " << *pqueue;
             }
             break;
 
         case 'G':
-            if(pstack)
+            if(pqueue)
             {
                 input = atoi(argv[commend[i]+1]);
                 cout << "  G";
-                if((k = (*pstack)[input] ) != -1)
+                if((k = (*pqueue)[input] ) != -1)
                     cout << "  " << k;
                 else
                 {
@@ -162,8 +170,9 @@ int main(int argc, char const *argv[])
 
         }
     }
-    delete pstack;
+    delete pqueue;  //释放
     //要关闭文件输出流
+    outf.flush();
     outf.close();
     // 恢复cout原来的流缓冲区指针
     // 不恢复会导致程序异常退出

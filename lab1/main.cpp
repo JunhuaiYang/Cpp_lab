@@ -29,7 +29,6 @@ int main(int argc, char const *argv[])
     char* ctemp;
     strcpy(name, argv[0]);
     ctemp = strtok(name, ".");
-    printf(ctemp);
     strcpy(name, ctemp);
     strcat( name, ".TXT");
     // 输出重定向
@@ -176,7 +175,7 @@ int main(int argc, char const *argv[])
         }
 
     }
-
+    free(pstack);
     return 0;
 }
 
