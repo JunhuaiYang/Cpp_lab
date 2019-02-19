@@ -16,6 +16,9 @@ int main(int argc, char const *argv[])
     {
         int M, F, m, f;
         // 解决舞伴问题。
+        cout << "*******************************************"<<endl;
+        cout << "             舞伴问题                  " << endl;
+        cout << "*******************************************"<<endl << endl;
         cout << "请输入男女两队的初始人数M和F, 如7  11" <<endl;
         cin >> M >> F;
         //判断是否为质数
@@ -65,6 +68,8 @@ int main(int argc, char const *argv[])
             count++;
         }while(tm!=m || tf!=f);
         cout << "可知在第" << count << "支舞曲时可以遇到。"<<endl;
+        getchar();
+        getchar();
         return 0;
     }
 

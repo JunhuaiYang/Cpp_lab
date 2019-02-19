@@ -183,6 +183,7 @@ int main(int argc, char const *argv[])
 void initSTACK(STACK *const p, int m)
 {
     p->elems = (int*)malloc(sizeof(int)*m);
+    //ÄÚ´æ·ÖÅäÊ§°Ü
     if(!p->elems)
         exit(1);
 

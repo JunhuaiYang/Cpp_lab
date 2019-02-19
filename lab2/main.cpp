@@ -173,6 +173,7 @@ int main(int argc, char const *argv[])
 }
 
 //初始化栈：最多存m个元素
+// new 异常处理应该在运行时处理。
 STACK::STACK(int m) :
     // const 类型的常量只能用初始化列表
     elems(new int[m]),
@@ -199,8 +200,11 @@ STACK::STACK(const STACK& s):
 //销毁栈
 STACK::~STACK()
 {
-    //必须要用[]在前面，否则只是释放了
+    // 防止重复析构
+    if(elems == NULL) return;
+    // 必须要用[]在前面，否则只是释放了
     delete []elems;
+    *((int **)&elems) = NULL;
 }
 
 //返回栈的最大元素个数max

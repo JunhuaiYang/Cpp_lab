@@ -20,8 +20,8 @@ QUEUE::QUEUE(const QUEUE&s) :
 //销毁队列
 QUEUE::~QUEUE( )
 {
+    //虚函数会自动调用基类的析构函数
     //s2会被自动调用delete
-    this->~STACK();
 }
 
 //返回队列的实际元素个数
@@ -48,6 +48,9 @@ int QUEUE::full ( ) const
 //取下标为x的元素，第1个元素下标为0
 int QUEUE::operator[ ](int x)const
 {
+    //判断输入是否超出范围
+    if(x>=*this)
+        return -1;
     // 入队栈正序
     // 出队栈倒序
     //出队栈在前

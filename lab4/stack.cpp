@@ -27,7 +27,11 @@ STACK::STACK(const STACK& s):
 
 STACK::~STACK()
 {
+    // 防止重复析构
+    if(elems == NULL) return;
+    // 必须要用[]在前面，否则只是释放了
     delete []elems;
+    *((int **)&elems) = NULL;
 }
 
 //返回栈的最大元素个数max
